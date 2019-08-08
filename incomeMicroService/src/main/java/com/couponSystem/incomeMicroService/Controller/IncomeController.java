@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,13 +70,14 @@ public class IncomeController {
 		
 	}
 		
-	@GetMapping("/ViewIncomesByCustomer")
-	public ResponseEntity<List<Income>> viewIncomeByCustomer(@RequestBody  Income income) {
+	@GetMapping("/ViewIncomesByCustomer/{customerName}")
+	public ResponseEntity<List<Income>> viewIncomeByCustomer(@PathVariable("customerName") String customerName ) {
 		
+		System.out.println(customerName);
 		
 		try {
 			
-			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(serviceImpl.viewIncomeByCustomer(income.getName()),HttpStatus.OK); 
+			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(serviceImpl.viewIncomeByCustomer(customerName),HttpStatus.OK); 
 			return result ; 
 			
 		} catch (Exception e) {
@@ -86,14 +88,14 @@ public class IncomeController {
 		
 	}
 	
-	@GetMapping("/ViewIncomesByCompany")
-	public ResponseEntity<List<Income>> viewIncomeByCompany(@RequestBody Income income) {
+	@GetMapping("/ViewIncomesByCompany/{CompanyName}")
+	public ResponseEntity<List<Income>> viewIncomeByCompany(@PathVariable("CompanyName") String companyName ) {
 		
-
+		System.out.println(companyName);
 		
 		try {
 			
-			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(serviceImpl.viewIncomeByCompany(income.getName()),HttpStatus.OK); 
+			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(serviceImpl.viewIncomeByCustomer(companyName),HttpStatus.OK); 
 			return result ; 
 			
 		} catch (Exception e) {
@@ -104,7 +106,8 @@ public class IncomeController {
 		
 	}
 	
-	
+		
+	}
 	
 	
 	
@@ -113,4 +116,3 @@ public class IncomeController {
 	
 	
 
-}

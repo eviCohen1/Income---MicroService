@@ -24,21 +24,21 @@ public class IncomeMicroServiceApplication {
 		
 		
 		
-		for( int i = 0 ;i<=20 ;i++)
-		{ 
-			Income incomeTest = new Income();  
-			
-			Date Date = new Date();
-			
-			
-			incomeTest.setAmount(i);
-			incomeTest.setDescription(IncomeType.COMPANY_NEW_COUPON);
-			incomeTest.setName("Coupon " + i );
-			incomeTest.setDate(Date.toString());
-			
-			incomRepo.save(incomeTest);
-			
-		}
+//		for( int i = 0 ;i<=20 ;i++)
+//		{ 
+//			Income incomeTest = new Income();  
+//			
+//			Date Date = new Date();
+//			
+//			
+//			incomeTest.setAmount(i);
+//			incomeTest.setDescription(IncomeType.COMPANY_NEW_COUPON);
+//			incomeTest.setName("Coupon " + i );
+//			incomeTest.setDate(Date.toString());
+//			
+//			incomRepo.save(incomeTest);
+//			
+//		}
 
 		
 		

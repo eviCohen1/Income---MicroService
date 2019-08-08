@@ -51,7 +51,8 @@ public class IncomeServiceImpl  implements IncomeSrevice{
 		
 		for (Income income : allIncome) {
 			
-			if(income.getName().equals(companyName)) { 
+			if(income.getName().equals(companyName)) 
+			{ 
 				result.add(income); 
 			}
 			
