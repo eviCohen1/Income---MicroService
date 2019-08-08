@@ -2,6 +2,8 @@ package com.couponSystem.incomeMicroService;
 
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import org.springframework.boot.SpringApplication;
@@ -26,13 +28,13 @@ public class IncomeMicroServiceApplication {
 		{ 
 			Income incomeTest = new Income();  
 			
+			Date Date = new Date();
 			
-			Date date = new Date(); 
 			
 			incomeTest.setAmount(i);
 			incomeTest.setDescription(IncomeType.COMPANY_NEW_COUPON);
 			incomeTest.setName("Coupon " + i );
-			incomeTest.setDate(date);
+			incomeTest.setDate(Date.toString());
 			
 			incomRepo.save(incomeTest);
 			

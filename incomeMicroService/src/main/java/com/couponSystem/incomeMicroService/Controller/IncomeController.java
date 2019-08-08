@@ -31,16 +31,13 @@ public class IncomeController {
 	private IncomeServiceImpl serviceImpl ; 
 	
 	@PostMapping("/storeIncome")
-	public ResponseEntity storeIncome(@RequestBody String jsonIncomeString) { 
-		
-		Gson gson = new Gson(); 
-		Income incomeJason = gson.fromJson(jsonIncomeString, Income.class);
-		
+	public ResponseEntity storeIncome(@RequestBody Income income) { 
+
 		try { 
 			
-			if(jsonIncomeString != null ) {
+			if(income != null ) {
 				
-				serviceImpl.storeIncome(incomeJason);
+				serviceImpl.storeIncome(income);
 				 
 				return ResponseEntity.ok(HttpStatus.OK); 
 				
@@ -52,8 +49,10 @@ public class IncomeController {
 			
 	}
 	
-		@GetMapping("/ViewAllIncomes")
+	@GetMapping("/ViewAllIncomes")
 	public ResponseEntity<List<Income>> viewAllIncome() {
+		
+		
 		
 		try {
 			
@@ -63,21 +62,20 @@ public class IncomeController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(HttpStatus.EXPECTATION_FAILED); 
+			
+			System.out.println(result);
 			return result ;
 		}
 		
 	}
 		
 	@GetMapping("/ViewIncomesByCustomer")
-	public ResponseEntity<List<Income>> viewIncomeByCustomer(@RequestBody String jsonIncomeString) {
-		
-		Gson gson = new Gson(); 
-		Income incomeJason = gson.fromJson(jsonIncomeString, Income.class);
+	public ResponseEntity<List<Income>> viewIncomeByCustomer(@RequestBody  Income income) {
 		
 		
 		try {
 			
-			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(serviceImpl.viewIncomeByCustomer(incomeJason.getName()),HttpStatus.OK); 
+			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(serviceImpl.viewIncomeByCustomer(income.getName()),HttpStatus.OK); 
 			return result ; 
 			
 		} catch (Exception e) {
@@ -89,14 +87,13 @@ public class IncomeController {
 	}
 	
 	@GetMapping("/ViewIncomesByCompany")
-	public ResponseEntity<List<Income>> viewIncomeByCompany(@RequestBody String jsonIncomeString) {
+	public ResponseEntity<List<Income>> viewIncomeByCompany(@RequestBody Income income) {
 		
-		Gson gson = new Gson(); 
-		Income incomeJason = gson.fromJson(jsonIncomeString, Income.class);
+
 		
 		try {
 			
-			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(serviceImpl.viewIncomeByCompany(incomeJason.getName()),HttpStatus.OK); 
+			ResponseEntity<List<Income>> result = new ResponseEntity<List<Income>>(serviceImpl.viewIncomeByCompany(income.getName()),HttpStatus.OK); 
 			return result ; 
 			
 		} catch (Exception e) {

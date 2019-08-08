@@ -2,7 +2,9 @@ package com.couponSystem.incomeMicroService.model;
 
 public enum IncomeType {
 	
-	CUSTOMER_PURCHASE("AAAA"),COMPANY_NEW_COUPON("BBBB"),COMPANY_UPDATE_COUPON("CCCCC");  
+	CUSTOMER_PURCHASE("CUSTOMER_PURCHASE"),
+	COMPANY_NEW_COUPON("COMPANY_NEW_COUPON"),
+	COMPANY_UPDATE_COUPON("COMPANY_UPDATE_COUPON");  
 	
 	
 	private String description; 
@@ -16,6 +18,11 @@ public enum IncomeType {
 		
 		return description ; 
 	}
+	
+    @Override
+    public String toString() {
+        return this.getDescription();
+    }
 
 
 }

@@ -6,8 +6,12 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,12 +31,14 @@ public class Income {
 	@Column(nullable = false)
 	private String name;
 	
-	@Basic(optional = false )
-	@Column(nullable = false)
-	private Date date;
 	
 	@Basic(optional = false )
 	@Column(nullable = false)
+	private String date;
+	
+	@Basic(optional = false )
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private IncomeType description; 
 	
 	@Basic(optional = false )
